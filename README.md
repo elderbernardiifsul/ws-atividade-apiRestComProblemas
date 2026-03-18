@@ -64,6 +64,7 @@ Na vida profissional, a habilidade mais valiosa não é acertar de primeira, mas
    node app.js
    ```
 4. Confirme que a API inicia e que você consegue acessar as rotas.
+   API de Livros rodando em http://localhost:3000 deve aparecer como sinal de sucesso. Aliás, essa é a URL de endpoint da API, para onde você deve realizar as requisições.
 
 ### Fase 2 — Investigação e Correção
 1. Analise o código de **todos os arquivos** da API: `routes/`, `controllers/`, `services/`, `dao/`.
