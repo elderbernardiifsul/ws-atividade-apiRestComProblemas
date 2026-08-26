@@ -33,7 +33,7 @@ Sua missão: **encontrar, diagnosticar e corrigir** os problemas estruturais dis
 > **Material 1:** "Criando a primeira API REST"
 > **Material 2:** "Modelagem e Programação de Serviços REST com Express.js"
 >
-> Estes materiais são pré-requisito. Os erros da API estão distribuídos pelas camadas (Routes, Controller, Service, DAO) e só podem ser identificados com domínio dos conceitos de ambos os materiais. Sem a leitura, a atividade não pode ser concluída.
+> Estes materiais são pré-requisito e estão no material de apoio da disciplina. Os erros da API estão distribuídos pelas camadas (Routes, Controller, Service, DAO) e só podem ser identificados com domínio dos conceitos de ambos os materiais. Sem a leitura, a atividade não pode ser concluída.
 
 ---
 
