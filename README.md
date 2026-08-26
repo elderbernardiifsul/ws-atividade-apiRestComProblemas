@@ -1,7 +1,7 @@
 # Atividade: Detetive de APIs
 **Disciplina:** Serviços Web 
 **Professor:** Élder F. F. Bernardi
-**Duração estimada:** 2 horas
+**Duração estimada:** 6 horas
 ---
 
 ## Contexto
