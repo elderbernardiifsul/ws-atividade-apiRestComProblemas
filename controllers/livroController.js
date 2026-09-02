@@ -1,7 +1,6 @@
 // controllers/livroController.js — Orquestração das requisições de Livros
 
 const livroService = require("../services/livroService");
-const livroDAO = require("../dao/livroDAO");
 
 // =============================================
 // Listar todos os livros
@@ -23,7 +22,14 @@ function buscarPorId(req, res, next) {
     const id = parseInt(req.params.id);
     const livro = livroService.buscarPorId(id);
 
-    return res.status(200).json(livro || {});
+    if (!livro) {
+      return res.status(404).json({
+        sucesso: false,
+        mensagem: "Livro não encontrado",
+      });
+    }
+
+    return res.status(200).json(livro);
   } catch (erro) {
     return next(erro);
   }
@@ -45,7 +51,7 @@ function criar(req, res, next) {
 
     const novoLivro = livroService.criar(dados);
 
-    return res.status(200).json(novoLivro);
+    return res.status(201).json(novoLivro);
   } catch (erro) {
     return next(erro);
   }
@@ -56,7 +62,7 @@ function criar(req, res, next) {
 // =============================================
 function atualizar(req, res, next) {
   try {
-    const id = parseInt(req.body.id);
+    const id = parseInt(req.params.id);
     const dados = req.body;
 
     const livroAtualizado = livroService.atualizar(id, dados);
@@ -79,11 +85,17 @@ function atualizar(req, res, next) {
 // =============================================
 function remover(req, res, next) {
   try {
-    livroDAO.limparTudo();
+    const id = parseInt(req.params.id);
+    const removido = livroService.remover(id);
 
-    return res.status(200).json({
-      mensagem: "Livros removidos com sucesso.",
-    });
+    if (!removido) {
+      return res.status(404).json({
+        sucesso: false,
+        mensagem: "Livro com id " + id + " não encontrado para remoção",
+      });
+    }
+
+    return res.status(204).send();
   } catch (erro) {
     return next(erro);
   }
@@ -98,17 +110,17 @@ function buscarResumo(req, res, next) {
     const livro = livroService.buscarPorId(id);
 
     if (!livro) {
-      return res.status(404).send("Livro não encontrado");
+      return res.status(404).json({
+        sucesso: false,
+        mensagem: "Livro não encontrado",
+      });
     }
 
-    res.send(
-      "titulo: " +
-        livro.titulo +
-        ", autor: " +
-        livro.autor +
-        ", preco: " +
-        livro.preco
-    );
+    return res.status(200).json({
+      titulo: livro.titulo,
+      autor: livro.autor,
+      preco: livro.preco,
+    });
   } catch (erro) {
     return next(erro);
   }

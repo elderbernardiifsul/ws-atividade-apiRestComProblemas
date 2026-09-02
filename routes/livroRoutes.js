@@ -10,7 +10,7 @@ const livroController = require("../controllers/livroController");
 // =============================================
 
 // Lista todos os livros
-router.get("/getLivros", livroController.listar);
+router.get("/", livroController.listar);
 
 // Busca um livro específico pelo identificador
 router.get("/:id", livroController.buscarPorId);
@@ -19,12 +19,12 @@ router.get("/:id", livroController.buscarPorId);
 router.get("/:id/resumo", livroController.buscarResumo);
 
 // Cria um novo livro
-router.get("/novo", livroController.criar);
+router.post("/", livroController.criar);
 
 // Atualiza um livro existente
-router.put("/", livroController.atualizar);
+router.put("/:id", livroController.atualizar);
 
-// Remove livros
-router.delete("/", livroController.remover);
+// Remove um livro específico
+router.delete("/:id", livroController.remover);
 
 module.exports = router;
